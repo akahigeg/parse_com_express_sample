@@ -1,0 +1,30 @@
+---
+- hosts: servers
+  sudo: true
+  user: vagrant
+  vars:
+    node_version: "0.10.12"
+    node_prefix: "node-v{{node_version}}"
+    node_tarball: "{{node_prefix}}.tar.gz"
+    node_path: "/usr/local"
+  tasks:
+    - name: add backports
+      command: sh -c 'echo deb http://ftp.jp.debian.org/debian/ wheezy-backports main > /etc/apt/sources.list.d/wheezy-backports.list'
+
+    - name: install node.js
+      apt: name={{item.package_name}} update_cache=yes
+      with_items:
+        - { package_name: 'build-essential' }
+        - { package_name: 'curl' }
+        - { package_name: 'git' }
+        - { package_name: 'libssl-dev' }
+        - { package_name: 'nodejs' }
+
+    - name: make symbolic link for nodejs to node
+      command: ln -s /usr/bin/nodejs /usr/bin/node
+
+    - name: download npm setup script
+      get_url: url="http://www.npmjs.org/install.sh" dest=/tmp/npm_install.sh
+
+    - name: install npm
+      command: sh /tmp/npm_install.sh
