@@ -1,3 +1,4 @@
 .gitmodules
 .vagrant
 .DS_Store
+global.json

@@ -21,10 +21,13 @@
         - { package_name: 'nodejs' }
 
     - name: make symbolic link for nodejs to node
-      command: ln -s /usr/bin/nodejs /usr/bin/node
+      file: src=/usr/bin/nodejs dest=/usr/bin/node
 
     - name: download npm setup script
       get_url: url="http://www.npmjs.org/install.sh" dest=/tmp/npm_install.sh
 
     - name: install npm
       command: sh /tmp/npm_install.sh
+
+    - name: install express
+      command: npm install express
