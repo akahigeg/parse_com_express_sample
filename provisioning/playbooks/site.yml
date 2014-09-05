@@ -21,7 +21,7 @@
         - { package_name: 'nodejs' }
 
     - name: make symbolic link for nodejs to node
-      file: src=/usr/bin/nodejs dest=/usr/bin/node
+      file: src=/usr/bin/nodejs dest=/usr/bin/node state=link
 
     - name: download npm setup script
       get_url: url="http://www.npmjs.org/install.sh" dest=/tmp/npm_install.sh
@@ -30,4 +30,7 @@
       command: sh /tmp/npm_install.sh
 
     - name: install express
-      command: npm install express
+      command: npm install -g express
+
+    - name: install node-supervisor
+      command: npm install -g supervisor

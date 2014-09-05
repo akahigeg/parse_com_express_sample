@@ -4,3 +4,16 @@ require('cloud/app.js');
 //Parse.Cloud.define("hello", function(request, response) {
 //  response.success("Hello world!");
 //});
+
+Parse.Cloud.define("hello", function(request, response) {
+  var Item = Parse.Object.extend("Item");
+  var item = new Item();
+  item.save({name: "FirstItem"}, {
+    success: function(object) {
+      response.success('yay');
+    },
+    error: function(object) {
+      response.error('oops');
+    }
+  });
+});
