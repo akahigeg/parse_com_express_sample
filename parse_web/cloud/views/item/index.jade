@@ -1,0 +1,15 @@
+extends ../_layout
+block body
+  h1 Items
+  p #{items.length} 件
+  table
+    - each item in items
+      tr
+        td
+          = item.get("name")
+        td
+          a(href="/items/show/#{item.id}") 詳細
+        td
+          a(href="/items/edit/#{item.id}") 編集
+        td
+          a(href="/items/destroy/#{item.id}") 削除

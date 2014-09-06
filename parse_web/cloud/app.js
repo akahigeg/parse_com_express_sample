@@ -71,21 +71,37 @@ app.post('/items/create', function(req, res) {
     // Itemの一覧
 });
 
-app.get('/users/edit/:id', function(req, res) {
+app.get('/items/edit/:id', function(req, res) {
     // Itemを編集するフォームを表示
 });
 
-app.post('/users/update/:id', function(req, res) {
+app.post('/items/update/:id', function(req, res) {
     // Itemを更新
 
 });
 
-app.post('/users/destroy/:id', function(req, res) {
-    // Itemの削除
-    // プロテクトされたItemは削除できない エラー表示
+app.get('/items/destroy/:id', function(req, res) {
+  var query = new Parse.Query("Item");
+  query.equalTo("objectId", req.params.id);
+  query.first({
+    success: function(item) {
+      item.destroy({
+        success: function(item) {
+          res.redirect("/items/index");
+        },
+        error: function(item, error) {
+          console.log("item destroy failed. error code: " + error.code);
+        }
+      });
+    },
+    error: function() {
+      response.error("item lookup failed");
+    }
+  });
+  // TODO: プロテクトされたItemは削除できない エラー表示
 });
 
-app.post('/users/destroy/:id', function(req, res) {
+app.post('/items/destroy/:id', function(req, res) {
     // Itemのプロテクト
 });
 
