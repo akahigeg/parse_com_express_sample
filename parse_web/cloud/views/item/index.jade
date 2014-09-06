@@ -1,7 +1,8 @@
 extends ../_layout
 block body
   h1 Items
-  p #{items.length} 件
+  p #{items.length} 件 
+    a(href="/items/new") 追加
   table
     - each item in items
       tr

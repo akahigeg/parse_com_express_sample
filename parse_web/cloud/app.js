@@ -51,24 +51,21 @@ app.get('/items/show/:id', function(req, res) {
 });
 
 app.get('/items/new', function(req, res) {
-    // Itemを作成するフォームを表示
+  res.render('item/new', template_vars);
 });
 
 app.post('/items/create', function(req, res) {
-  // Itemを作成
   var Item = Parse.Object.extend("Item");
   var item = new Item();
-  var result = app.get('env');
-  item.save({name: "SecondItem"}, {
+  item.save({name: req.body.name}, {
     success: function(object) {
-      result = "yay";
+      res.redirect("/items/index");
     },
-    error: function(object) {
-      result = "oops";
+    error: function(object, error) {
+      console.log("item create failed. error code: " + error.code);
+      res.redirect("/items/index");
     }
   });
-  res.render('hello', { message: result });
-    // Itemの一覧
 });
 
 app.get('/items/edit/:id', function(req, res) {

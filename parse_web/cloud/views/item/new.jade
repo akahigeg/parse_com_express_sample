@@ -1,0 +1,6 @@
+extends ../_layout
+block body
+  h1 Itemの新規作成
+  form(action="/items/create" method="post")
+    input(name="name" type="text")
+    input(type="submit" value="作成")
