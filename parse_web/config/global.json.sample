@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "QuestMap": {
+            "applicationId": "xxxxxx",
+            "masterKey": "xxxxxx"
+        },
+        "_default": {
+            "link": "QuestMap"
+        }
+    },
+    "global": {
+        "parseVersion": "1.2.19"
+    }
+}
