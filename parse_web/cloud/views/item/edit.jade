@@ -1,0 +1,7 @@
+extends ../_layout
+block body
+  h1 #{item.get("name")} (#{item.id}) の更新
+  form(action="/items/update", method="post")
+    input(name="id", type="hidden", value="#{item.id}")
+    input(name="name", type="text", value="#{item.get('name')}")
+    input(type="submit", value="更新")

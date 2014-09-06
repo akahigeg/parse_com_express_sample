@@ -69,12 +69,32 @@ app.post('/items/create', function(req, res) {
 });
 
 app.get('/items/edit/:id', function(req, res) {
-    // Itemを編集するフォームを表示
+  var query = new Parse.Query("Item");
+  query.equalTo("objectId", req.params.id);
+  query.first({
+    success: function(item) {
+      template_vars["item"] = item;
+      res.render('item/edit', template_vars);
+    },
+    error: function() {
+      response.error("item lookup failed");
+    }
+  });
 });
 
-app.post('/items/update/:id', function(req, res) {
-    // Itemを更新
-
+app.post('/items/update', function(req, res) {
+  var query = new Parse.Query("Item");
+  query.equalTo("objectId", req.body.id);
+  query.first({
+    success: function(item) {
+      item.set("name", req.body.name);
+      item.save();
+      res.redirect("/items/index");
+    },
+    error: function() {
+      response.error("item lookup failed");
+    }
+  });
 });
 
 app.get('/items/destroy/:id', function(req, res) {
