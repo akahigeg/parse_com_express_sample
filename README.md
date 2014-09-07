@@ -82,7 +82,7 @@ Python3系では動かないので注意。
     cd parse_web/config
     cp global.json.sample global.json
 
-`applicationId`と`masterKey`を自分で作成したParse Appのものに修正する。
+`[YOUR APP NAME]`の部分と`applicationId`と`masterKey`を自分で作成したParse Appのものに修正する。
 
 ### デプロイ
 

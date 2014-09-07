@@ -1,11 +1,11 @@
 {
     "applications": {
-        "QuestMap": {
+        "[YOUR APP NAME]": {
             "applicationId": "xxxxxx",
             "masterKey": "xxxxxx"
         },
         "_default": {
-            "link": "QuestMap"
+            "link": "[YOUR APP NAME]"
         }
     },
     "global": {
