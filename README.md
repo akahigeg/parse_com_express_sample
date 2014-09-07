@@ -77,7 +77,7 @@ Python3系では動かないので注意。
 
 ### global.jsonの作成
 
-[global.json.sample](https://github.com/akahigeg/parse_com_express_sample/blob/edit-readme/parse_web/config/global.json.sample)を元に作成する。
+[global.json.sample](https://github.com/akahigeg/parse_com_express_sample/blob/master/parse_web/config/global.json.sample)を元に作成する。
 
     cd parse_web/config
     cp global.json.sample global.json
