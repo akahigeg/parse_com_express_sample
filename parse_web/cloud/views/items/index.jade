@@ -1,9 +1,10 @@
 extends ../_layout
 block body
-  h1 Items
-  p #{items.length} 件 
+  div(class="page-header")
+    h1 Items
+  p #{items.length} 件
     a(href="/items/new") 追加
-  table
+  table(class="table")
     - each item in items
       tr
         td
@@ -13,4 +14,7 @@ block body
         td
           a(href="/items/edit/#{item.id}") 編集
         td
-          a(href="/items/destroy/#{item.id}") 削除
+          form(action="/items/destroy", method="post", name="d-#{item.id}")
+            input(name="id", type="hidden", value="#{item.id}")
+            input(name="name", type="hidden", value="#{item.get('name')}")
+            input(type="submit", value="削除")

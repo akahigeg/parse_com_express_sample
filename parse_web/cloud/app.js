@@ -33,7 +33,7 @@ app.post('/items/create', items_controller.create);
 app.get('/items/edit/:id', items_controller.edit);
 app.post('/items/update', items_controller.update);
 
-app.get('/items/destroy/:id', items_controller.destroy);
+app.post('/items/destroy', items_controller.destroy);
 
 // Attach the Express app to Cloud Code.
 app.listen(3000);

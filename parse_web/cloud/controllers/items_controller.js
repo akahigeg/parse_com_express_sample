@@ -75,7 +75,7 @@ exports.update = function(req, res) {
 
 exports.destroy = function(req, res) {
   var query = new Parse.Query("Item");
-  query.equalTo("objectId", req.params.id);
+  query.equalTo("objectId", req.body.id);
   query.first({
     success: function(item) {
       item.destroy({

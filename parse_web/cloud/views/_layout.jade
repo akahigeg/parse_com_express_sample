@@ -7,5 +7,10 @@ html.no-js(xmlns:og='http://ogp.me/ns#', xmlns:fb='https://www.facebook.com/2008
       meta(name='description', content=description)
       meta(name='keywords', content=keywords)
       meta(name='robots', content=robots)
-  body
-    block body
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css")
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css")
+    script(src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
+  body(role="document")
+    div(class="container theme-showcase", role="main")
+      block body
