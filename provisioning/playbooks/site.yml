@@ -2,11 +2,6 @@
 - hosts: servers
   sudo: true
   user: vagrant
-  vars:
-    node_version: "0.10.12"
-    node_prefix: "node-v{{node_version}}"
-    node_tarball: "{{node_prefix}}.tar.gz"
-    node_path: "/usr/local"
   tasks:
     - name: add backports
       command: sh -c 'echo deb http://ftp.jp.debian.org/debian/ wheezy-backports main > /etc/apt/sources.list.d/wheezy-backports.list'
